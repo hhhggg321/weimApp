@@ -1,10 +1,5 @@
-# React Native-NativeBase Seed v5.2.0
+# weimApp v0.0.1
 
-React Native-NativeBase Seed is a basic configuration that every React Native app must have.
-
-This is open source and perfect for any newbie to start with React Native.
-
-This is a [React Native](https://github.com/facebook/react-native) Project with [NativeBase](http://nativebase.io/documentation), [Navigation Experimental](https://facebook.github.io/react-native/docs/navigation.html#navigationexperimental), [Redux](http://redux.js.org/), [CodePush](https://github.com/Microsoft/react-native-code-push), Router, Push Notification and other basic must-have libraries.
 
 
 ## Get Started
@@ -27,9 +22,9 @@ This is a [React Native](https://github.com/facebook/react-native) Project with 
 A few set of commands, and you are ready to get going.
 
 ```
-git clone git@github.com:GeekyAnts/react-native-native-base-seed.git
+git clone https://github.com/hhhggg321/weimApp.git
 
-cd react-native-native-base-seed
+cd weimApp
 
 npm install
 
@@ -56,15 +51,6 @@ While running `react-native android` do not overwrite `index.android.js` file.
 
 ###3. Simulate for iOS
 
-**Method One**
-
-*	Open the project in XCode from **ios/ReactNativeNativeBaseSeed.xcodeproj**
-
-*	Hit the play button.
-
-
-**Method Two**
-
 *	Run the following command in your terminal
 
 ```sh
@@ -80,5 +66,3 @@ $ react-native run-ios
 ```sh
 $ react-native run-android
 ```
-
-Note: If you are building React Native-NativeBase Seed for first time on your system, please follow Method One to simulate on iOS. (To link the CodePush plugin through Xcode for iOS)
