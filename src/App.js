@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import CodePush from 'react-native-code-push';
 import Modal from 'react-native-modalbox';
+import AV from 'leancloud-storage';
 
 import { Container, Content, Text, View } from 'native-base';
 
 import AppNavigator from './AppNavigator';
 import ProgressBar from './components/loaders/ProgressBar';
 import theme from './themes/base-theme';
+import leanCloudConfig from './config/leanCloud'
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +36,12 @@ class App extends Component {
       showInstalling: false,
       downloadProgress: 0,
     };
+
+    //init leanCloud sdk
+    AV.init({
+      appId: leanCloudConfig.APP_ID,
+      appKey: leanCloudConfig.APP_KEY
+    });
   }
 
   componentDidMount() {

@@ -8,8 +8,9 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import { closeDrawer } from './actions/drawer';
 
+import Login from './components/account/login';
+import Register from './components/account/register';
 import Index from './components/index/';
-import Login from './components/login';
 import SplashPage from './components/splashscreen/';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -36,6 +37,11 @@ class AppNavigator extends Component {
       key: React.PropTypes.string,
       routes: React.PropTypes.array,
     }),
+    session: React.PropTypes.shape({
+      token: React.PropTypes.string,
+      userName: React.PropTypes.string,
+      isLogin: React.PropTypes.bool
+    })
   }
 
   componentDidMount() {
@@ -57,7 +63,7 @@ class AppNavigator extends Component {
     }
 
     if (this.props.drawerState === 'closed') {
-      this._drawer._root.close();
+      // this._drawer._root.close();
     }
   }
 
@@ -76,42 +82,54 @@ class AppNavigator extends Component {
   }
 
   render() {
-    return (
-      <Drawer
-        ref={(ref) => { this._drawer = ref; }}
-        type="overlay"
-        tweenDuration={150}
-        content={<SideBar navigator={this._navigator} />}
-        tapToClose
-        acceptPan={false}
-        onClose={() => this.closeDrawer()}
-        openDrawerOffset={100}
-        panCloseMask={0.2}
-        styles={{
-          drawer: {
-            shadowColor: '#000000',
-            shadowOpacity: 0.8,
-            shadowRadius: 3,
-          },
-        }}
-        tweenHandler={(ratio) => {  //eslint-disable-line
-          return {
-            drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
-            main: {
-              opacity: (2 - ratio) / 2,
-            },
-          };
-        }}
-        negotiatePan
-      >
+    if(!this.props.session.isLogin){
+      return (
         <Router>
-          <Scene key="root">
-            <Scene key="login" component={Login} title="登录"  />
-            <Scene key="home" component={Index} title="首页" initial={true} />
-          </Scene>
+            <Scene key="root">
+              <Scene key="login" component={Login} title="登录"  />
+              <Scene key="register" component={Register} title="注册"  />
+            </Scene>
         </Router>
-      </Drawer>
-    );
+      )
+    }else{
+      return (
+        <Drawer
+          ref={(ref) => { this._drawer = ref; }}
+          type="overlay"
+          tweenDuration={150}
+          content={<SideBar navigator={this._navigator} />}
+          tapToClose
+          acceptPan={false}
+          onClose={() => this.closeDrawer()}
+          openDrawerOffset={100}
+          panCloseMask={0.2}
+          styles={{
+            drawer: {
+              shadowColor: '#000000',
+              shadowOpacity: 0.8,
+              shadowRadius: 3,
+            },
+          }}
+          tweenHandler={(ratio) => {  //eslint-disable-line
+            return {
+              drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
+              main: {
+                opacity: (2 - ratio) / 2,
+              },
+            };
+          }}
+          negotiatePan
+        >
+          <Router>
+            <Scene key="root">
+              <Scene key="login" component={Login} title="登录"  />
+              <Scene key="home" component={Index} title="首页" initial={true} />
+            </Scene>
+          </Router>
+        </Drawer>
+      );
+    }
+    
   }
 }
 
@@ -125,6 +143,7 @@ function bindAction(dispatch) {
 const mapStateToProps = state => ({
   drawerState: state.drawer.drawerState,
   navigation: state.cardNavigation,
+  session: state.session
 });
 
 export default connect(mapStateToProps, bindAction)(AppNavigator);
