@@ -46,10 +46,10 @@ export default class AuthTextInput extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 2,
-    marginBottom: 10
+    marginBottom: 2
   },
   textInputWrapper: {
-    height: 42,
+    height: 40,
     marginBottom: 2,
     borderBottomWidth: 1
   },

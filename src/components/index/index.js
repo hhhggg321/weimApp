@@ -35,7 +35,7 @@ class Index extends Component {
       <Container theme={myTheme}>
         <Content>
           <Text style={{ marginTop: 180, marginLeft: 22, fontSize: 22, fontWeight: 'bold' }}>
-            weimApp
+            hello{this.props.session.userName}
           </Text>
           <Button onPress={Actions.login}>
             <Text>login</Text>
@@ -55,6 +55,7 @@ function bindActions(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
+  session: state.session
 });
 
 export default connect(mapStateToProps, bindActions)(Index);

@@ -6,15 +6,20 @@ export default styles = StyleSheet.create({
   container: {
     paddingHorizontal: metrics.DEVICE_WIDTH * 0.1
   },
+  logo: {
+    marginTop: 100,
+    alignSelf: 'center'
+  },
   form: {
-    marginTop: 180
+    marginTop: 50
   },
   footer: {
-    marginTop:20,
+    marginTop: 20,
     height: 100,
     justifyContent: 'center'
   },
   loginButton: {
+    marginTop: 15,
     backgroundColor: 'white'
   },
   loginButtonText: {
@@ -23,7 +28,6 @@ export default styles = StyleSheet.create({
   },
   signupLink: {
     color: '#000000',
-    // color: 'rgba(255,255,255,0.6)',
     alignSelf: 'center',
     padding: 20
   },
@@ -31,7 +35,9 @@ export default styles = StyleSheet.create({
   errorMessage: {
     color: 'red',
     alignSelf: 'flex-start',
-    padding: 20
+    paddingTop: 10,
+    paddingBottom: 20
+
   },
 
   smsButton: {
@@ -42,5 +48,9 @@ export default styles = StyleSheet.create({
     top: -40,
   },
   btnText: {
+  },
+  wechat: {
+    marginTop: 20,
+    alignSelf: 'center',
   }
 })

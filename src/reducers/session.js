@@ -20,9 +20,8 @@ export default function (state:State = initialState, action:Action): State {
       initialState
     };
   }else if(action.type === LOG_IN){
-    alert('sessiong' + JSON.stringify(action));
     return {
-      token: action.id,
+      token: action.token,
       userName: action.userName,
       isLogin: true
     }
